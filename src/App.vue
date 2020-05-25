@@ -12,3 +12,16 @@ export default {
   components: { Chat }
 }
 </script>
+
+<style scoped>
+#base {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#chat {
+  height: 90%;
+  width: 70%;
+}
+</style>
