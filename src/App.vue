@@ -4,8 +4,8 @@
       <div
         class="message"
         v-for="msg in messages"
-        :key="msg">
-        {{ msg }}
+        :key="msg.id">
+        {{ msg.text }}
       </div>
     </div>
     <div id="toolbar">

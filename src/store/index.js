@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { Message } from '../models/message'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,6 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    messages: (state) => state.messages
+    messages: (state) => state.messages.map(m => new Message(m))
   }
 })
