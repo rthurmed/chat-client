@@ -1,28 +1,48 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="chat">
+    <div id="feed">
+      <div
+        class="message"
+        v-for="msg in messages"
+        :key="msg">
+        {{ msg }}
+      </div>
+    </div>
+    <div id="toolbar">
+      <input type="text" v-model="message">
+      <button @click="send">
+        Enviar
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      message: ''
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'messages'
+    ])
+  },
+  methods: {
+    send () {
+      this.$socket.emit('write', this.message)
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+#chat {
+  display: grid;
+  grid-template-rows: 90vh 10vh;
 }
 </style>
