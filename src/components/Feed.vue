@@ -1,5 +1,5 @@
 <template>
-  <div id="feed">
+  <div id="feed" ref="feed">
     <div
       class="line"
       v-for="msg in messages"
@@ -22,13 +22,22 @@ export default {
     ...mapGetters([
       'messages'
     ])
-  }
+  },
+  watch: {
+    messages: function () {
+      const feed = this.$refs.feed
+      setTimeout(function () {
+        feed.scrollTo(0, feed.scrollHeight)
+      }, 100)
+    }
+  },
 }
 </script>
 
 <style scoped>
 #feed {
   overflow-y: auto;
+  scroll-behavior: smooth;
   padding-right: 0.5em;
   margin-bottom: 0.5em;
 }
