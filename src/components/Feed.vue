@@ -5,24 +5,24 @@
       v-for="msg in messages"
       :key="msg.id"
     >
-      <div class="message-container">
-        <span class="message">
-          {{ msg.text }}
-        </span>
-      </div>
+      <message :message="msg" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Message from '../components/Message'
 
 export default {
+  components: {
+    Message
+  },
   computed: {
     ...mapGetters([
       'messages'
     ])
-  },
+  }
 }
 </script>
 
@@ -37,12 +37,6 @@ export default {
 }
 .line:last-of-type {
   margin-bottom: 0;
-}
-.message-container {
-  display: inline-block;
-  padding: 0.5em;
-  background-color: white;
-  border-radius: 0.25em;
 }
 /* Scroll bar */
 ::-webkit-scrollbar
