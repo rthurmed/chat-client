@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   props: {
     message: {
@@ -19,8 +21,7 @@ export default {
   },
   filters: {
     date: (value) => {
-      const date = new Date(value)
-      return `${date.getHours()}:${date.getMinutes()}`
+      return moment(value).format('HH:mm')
     }
   }
 }
