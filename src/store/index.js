@@ -11,6 +11,24 @@ export default new Vuex.Store({
   mutations: {
     socket_message (state, message) {
       state.messages.push(message)
+    },
+    set_messages (state, messages) {
+      state.messages = messages
+    }
+  },
+  actions: {
+    load_messages ({ commit }) {
+      return new Promise((resolve, reject) => {
+        Message.list()
+          .then((response) => {
+            const messages = response.list
+            commit('set_messages', messages)
+            resolve(messages)
+          })
+          .catch((error) => {
+            reject(error)
+          })
+      })
     }
   },
   getters: {

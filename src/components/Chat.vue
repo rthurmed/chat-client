@@ -6,11 +6,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Feed from '../components/Feed'
 import Toolbar from '../components/Toolbar'
 
 export default {
-  components: { Feed, Toolbar }
+  components: { Feed, Toolbar },
+  async created () {
+    await this.loadMessages()
+  },
+  methods: {
+    ...mapActions({
+      loadMessages: 'load_messages'
+    })
+  }
 }
 </script>
 
