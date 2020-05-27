@@ -39,7 +39,6 @@ export default {
   overflow-y: auto;
   scroll-behavior: smooth;
   padding-right: 0.5em;
-  margin-bottom: 0.5em;
 }
 .line {
   margin-bottom: 0.5em;
@@ -57,7 +56,6 @@ export default {
 {
   background: rgba(0, 0, 0, 0.1);
   border-radius: 0.25em;
-  margin-bottom: 0.5em;
 }
 ::-webkit-scrollbar-thumb
 {

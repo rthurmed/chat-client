@@ -27,6 +27,7 @@ export default {
 #chat {
   display: grid;
   grid-template-rows: auto 3em;
+  grid-gap: 0.5em;
   padding: 0.5em;
   border-radius: 0.5em;
   background-color: lightsteelblue;
