@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadMessages: 'load_messages'
+      loadMessages: 'load_previous_message'
     })
   }
 }
