@@ -1,7 +1,7 @@
 <template>
   <div id="chat">
     <feed ref="feed" />
-    <toolbar />    
+    <toolbar @send="messageSentEventHandler" />    
   </div>
 </template>
 
@@ -21,7 +21,11 @@ export default {
   methods: {
     ...mapActions({
       loadMessages: 'load_previous_message'
-    })
+    }),
+    messageSentEventHandler () {
+      // When the user sends a message the feed scrolls to show his message
+      this.$refs.feed.scrollToBottom()
+    }
   }
 }
 </script>

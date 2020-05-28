@@ -31,6 +31,7 @@ export default {
     send () {
       this.$socket.emit('write', this.message)
       this.message = ''
+      this.$emit('send')
     }
   }
 }
