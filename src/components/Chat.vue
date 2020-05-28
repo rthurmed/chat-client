@@ -1,6 +1,6 @@
 <template>
   <div id="chat">
-    <feed />
+    <feed ref="feed" />
     <toolbar />    
   </div>
 </template>
@@ -12,8 +12,11 @@ import Toolbar from '../components/Toolbar'
 
 export default {
   components: { Feed, Toolbar },
-  async created () {
-    await this.loadMessages()
+  created () {
+    this.loadMessages()
+      .then(() => {
+        this.$refs.feed.scrollToBottom()
+      })
   },
   methods: {
     ...mapActions({

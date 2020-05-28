@@ -9,14 +9,19 @@ export default new Vuex.Store({
     messages: [],
     meta: {
       totalDocs: 0,
-      totalPages: 0,
+      totalPages: 1,
       page: 0,
-      hasNextPage: false
+      hasNextPage: false,
+      hasNewMessage: false
     }
   },
   mutations: {
     socket_message (state, message) {
       state.messages.push(message)
+      state.meta.hasNewMessage = true
+    },
+    read_new_message (state) {
+      state.meta.hasNewMessage = false
     },
     // Add messages to the start of the list 
     add_messages (state, messages) {
@@ -24,13 +29,21 @@ export default new Vuex.Store({
     },
     set_meta (state, meta) {
       const { totalDocs, totalPages, page, hasNextPage } = meta
-      state.meta = { totalDocs, totalPages, page, hasNextPage }
+      state.meta.totalDocs = totalDocs
+      state.meta.totalPages = totalPages
+      state.meta.page = page
+      state.meta.hasNextPage = hasNextPage
     }
   },
   actions: {
     load_previous_message ({ commit, state }) {
       return new Promise((resolve, reject) => {
-        Message.list({ page: state.meta.page + 1 })
+        if (state.meta.page >= state.meta.totalPages) {
+          resolve([])
+          return
+        }
+        const page = state.meta.page + 1
+        Message.list({ page })
           .then((response) => {
             const messages = response.list
             commit('add_messages', messages)
@@ -45,6 +58,7 @@ export default new Vuex.Store({
   },
   getters: {
     messages: (state) => state.messages.map(m => new Message(m)),
-    hasNextPage: (state) => state.meta.hasNextPage
+    hasNextPage: (state) => state.meta.hasNextPage,
+    hasNewMessage: (state) => state.meta.hasNewMessage
   }
 })
