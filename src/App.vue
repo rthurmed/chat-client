@@ -1,28 +1,25 @@
 <template>
-  <div id="base">
-    <chat id="chat" />
+  <div>
+    <nav>
+      <ul>
+        <li>
+          <router-link :to="{ name: 'home' }">Home</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'chat' }">Chat</router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'register' }">Register</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Chat from './components/Chat'
 
 export default {
-  name: 'App',
-  components: { Chat }
+  name: 'App'
 }
 </script>
-
-<style scoped>
-#base {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-}
-#chat {
-  height: 90%;
-  width: 70%;
-}
-</style>
