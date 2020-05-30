@@ -9,6 +9,20 @@ html, body {
   align-items: center;
 }
 
+/* FORM */
+.form-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-row .form-item {
+  margin-right: 0.5em;
+}
+
+.form-row .form-item:last-of-type {
+  margin-right: 0;
+}
+
 .form-item {
   margin-bottom: 0.5em;
 }
@@ -17,8 +31,19 @@ html, body {
   margin-bottom: initial;
 }
 
+.form-item-fill-width > input {
+  width: 100%;
+}
+
 .form-item > label {
   display: block;
+}
+
+.form-status {
+  display: inline-block;
+  padding-left: 0.5em;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .field {
@@ -26,6 +51,7 @@ html, body {
   background-color: white;
   border-radius: 0.25em;
   padding: 0.75em 1em;
+  box-sizing: border-box;
 }
 
 .btn {
