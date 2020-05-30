@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { Message } from '../models/message'
+import { auth } from './auth'
 
 Vue.use(Vuex)
 
@@ -60,5 +61,8 @@ export default new Vuex.Store({
     messages: (state) => state.messages.map(m => new Message(m)),
     hasNextPage: (state) => state.meta.hasNextPage,
     hasNewMessage: (state) => state.meta.hasNewMessage
+  },
+  modules: {
+    auth
   }
 })
