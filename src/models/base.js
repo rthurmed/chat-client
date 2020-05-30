@@ -1,3 +1,5 @@
+import { authHeaders } from '../http'
+
 export class Base {
   static endpoint = ''
   static list({ page = 1 }) {
@@ -6,7 +8,8 @@ export class Base {
       url.searchParams.append('p', page)
       fetch(url, {
         method: 'GET',
-        mode: 'cors'
+        mode: 'cors',
+        headers: authHeaders()
       })
         .then((response) => response.json())
         .then((response) => {

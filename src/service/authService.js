@@ -1,3 +1,5 @@
+import { authHeaders, defaultHeaders } from '../http'
+
 const ENDPOINT = `${process.env.VUE_APP_SERVER_HOST}/auth`
 const endpoints = {
   REGISTER: `${ENDPOINT}/register`,
@@ -11,6 +13,7 @@ export class AuthService {
       fetch(endpoints.REGISTER, {
         method: 'POST',
         mode: 'cors',
+        headers: defaultHeaders(),
         body: JSON.stringify({
           name,
           email,
@@ -31,6 +34,7 @@ export class AuthService {
       fetch(endpoints.LOGIN, {
         method: 'POST',
         mode: 'cors',
+        headers: defaultHeaders(),
         body: JSON.stringify({
           email,
           pass
@@ -49,7 +53,8 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       fetch(endpoints.LOGOUT, {
         method: 'GET',
-        mode: 'cors'
+        mode: 'cors',
+        headers: authHeaders()
       })
         .then((response) => response.json())
         .then((response) => {
