@@ -9,17 +9,17 @@ export class Message extends Base {
     text,
     createdAt,
     updatedAt,
-    user,
+    author,
   }) {
     super()
     this.id = _id
     this.text = text
     this.createdAt = createdAt
     this.updatedAt = updatedAt
-    this._user = user
+    this._author = author
   }
 
-  get user () {
-    return new User(this._user)
+  get author () {
+    return new User(this._author)
   }
 }

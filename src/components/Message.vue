@@ -1,10 +1,13 @@
 <template>
   <div class="message-container">
+    <div class="author">
+      {{ message.author.name }}
+    </div>
     <div class="message">
       {{ message.text }}
     </div>
     <div class="timestamp">
-      {{ message.timestamp | date }}
+      {{ message.createdAt | date }}
     </div>
   </div>
 </template>
@@ -35,9 +38,14 @@ export default {
   border-radius: 0.25em;
 }
 .timestamp {
-  margin-top: 0.2em;
   font-size: small;
   color: rgba(0, 0, 0, 0.6);
   text-align: right;
+}
+.message, .timestamp {
+  margin-top: 0.2em;
+}
+.author {
+  font-weight: bold;
 }
 </style>
