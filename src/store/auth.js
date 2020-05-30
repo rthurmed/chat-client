@@ -2,16 +2,26 @@ import jwt_decode from 'jwt-decode'
 import { AuthService } from '../service/authService'
 import { User } from '../models/user'
 
+const LOCAL_STORAGE_KEY = 'chat-token'
+
 export const auth = {
+  namespaced: true,
   state: () => ({
     token: null
   }),
   mutations: {
     set_token (state, token) {
       state.token = token
+      localStorage.setItem(LOCAL_STORAGE_KEY, token)
     }
   },
   actions: {
+    checkForAuth ({ commit }) {
+      const token = localStorage.getItem(LOCAL_STORAGE_KEY)
+      if (token != null) {
+        commit('set_token', token)
+      }
+    },
     register (context, { name, email, pass }) {
       return new Promise((resolve, reject) => {
         AuthService.register({ name, email, pass })
@@ -27,8 +37,6 @@ export const auth = {
       return new Promise((resolve, reject) => {
         AuthService.login({ email, pass })
           .then((response) => {
-            const decoded = jwt_decode(response.token)
-            console.log(decoded);
             commit('set_token', response.token)
             resolve()
           })

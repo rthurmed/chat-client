@@ -1,0 +1,35 @@
+html, body {
+  font-family: sans-serif;
+}
+
+.full-centered {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-item {
+  margin-bottom: 0.5em;
+}
+
+.form-item:last-of-type {
+  margin-bottom: initial;
+}
+
+.form-item > label {
+  display: block;
+}
+
+.field {
+  border: 0;
+  background-color: white;
+  border-radius: 0.25em;
+  padding: 0.75em 1em;
+}
+
+.btn {
+  border: 0;
+  border-radius: 0.25em;
+  padding: 0.75em;
+}

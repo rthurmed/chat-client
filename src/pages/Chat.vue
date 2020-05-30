@@ -14,11 +14,10 @@ export default {
 
 <style scoped>
 #base {
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: sans-serif;
 }
 #chat {
   height: 90%;

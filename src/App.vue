@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div id="base">
     <navbar />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
   </div>
 </template>
 
@@ -10,6 +12,16 @@ import Navbar from './components/Navbar'
 
 export default {
   name: 'App',
-  components: { Navbar }
+  components: { Navbar },
+  created () {
+    this.$store.dispatch('auth/checkForAuth')
+  }
 }
 </script>
+
+<style scoped>
+#base {
+  display: grid;
+  grid-template-rows: 10vh 90vh;
+}
+</style>

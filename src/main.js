@@ -4,6 +4,7 @@ import SocketIO from 'socket.io-client'
 import App from './App.vue'
 import store from './store'
 import router from './router'
+import './styles/main.css'
 
 Vue.config.productionTip = false
 
