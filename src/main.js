@@ -3,7 +3,7 @@ import VueSocketIO from 'vue-socket.io'
 import SocketIO from 'socket.io-client'
 import App from './App.vue'
 import store from './store'
-import { router } from './router'
+import router from './router'
 
 Vue.config.productionTip = false
 
