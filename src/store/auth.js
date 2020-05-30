@@ -50,6 +50,7 @@ export const auth = {
         AuthService.logout()
           .then(() => {
             commit('set_token', null)
+            localStorage.removeItem(LOCAL_STORAGE_KEY)
             resolve()
           })
           .catch((error) => {

@@ -22,6 +22,6 @@ export default {
 <style scoped>
 #base {
   display: grid;
-  grid-template-rows: 10vh 90vh;
+  grid-template-rows: 4em calc(100vh - 4em);
 }
 </style>

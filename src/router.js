@@ -4,25 +4,31 @@ import store from './store'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Chat from './pages/Chat'
-import Home from './pages/Home'
 
 Vue.use(Router)
+
+export const strictlyNotLoggedIn = (to, from, next) => {
+  if (store.getters['auth/loggedIn']) {
+    next({
+      path: '/chat'
+    })
+  } else {
+    next()
+  }
+}
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    name: 'login',
+    component: Login,
+    beforeEnter: strictlyNotLoggedIn
   },
   {
     path: '/register',
     name: 'register',
-    component: Register
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: Login
+    component: Register,
+    beforeEnter: strictlyNotLoggedIn
   },
   {
     path: '/chat',
