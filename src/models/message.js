@@ -1,17 +1,25 @@
 import { Base } from '../models/base'
+import { User } from './user'
 
 export class Message extends Base {
+  static endpoint = `${process.env.VUE_APP_SERVER_HOST}/messages`
+
   constructor ({
     _id,
     text,
-    timestamp,
-    sender = ''
+    createdAt,
+    updatedAt,
+    user,
   }) {
     super()
     this.id = _id
     this.text = text
-    this.timestamp = timestamp
-    this.sender = sender
+    this.createdAt = createdAt
+    this.updatedAt = updatedAt
+    this._user = user
   }
-  static endpoint = `${process.env.VUE_APP_SERVER_HOST}/messages`
+
+  get user () {
+    return new User(this._user)
+  }
 }
