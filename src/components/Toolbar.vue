@@ -17,11 +17,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
       message: ''
     }
+  },
+  computed: {
+    ...mapState('auth', [
+      'token'
+    ])
   },
   methods: {
     submit (e) {
@@ -29,7 +36,10 @@ export default {
       this.send()
     },
     send () {
-      this.$socket.emit('write', this.message)
+      this.$socket.emit('write', {
+        text: this.message,
+        token: this.token
+      })
       this.message = ''
       this.$emit('send')
     }
