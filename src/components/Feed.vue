@@ -107,10 +107,13 @@ export default {
   padding-right: 0.5em;
 }
 .line {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 0.5em;
 }
 .line.centered {
-  text-align: center;
+  flex-direction: initial;
+  justify-content: center;
 }
 .line:last-of-type {
   margin-bottom: 0;
